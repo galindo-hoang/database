@@ -17,4 +17,10 @@ public class CategoryServiceImpl implements CategoryService{
 	public List<Category> findAll() {
 		return dao.findAll();
 	}
+
+	@Override
+	public long count() {
+
+		return dao.count();
+	}
 }

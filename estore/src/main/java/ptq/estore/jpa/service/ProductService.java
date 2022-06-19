@@ -24,5 +24,8 @@ public interface ProductService{
 	Product findById(Integer id);
 
 	void update(Product product);
-	
+
+	List<Product> findAll();
+
+
 }

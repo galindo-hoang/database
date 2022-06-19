@@ -8,5 +8,5 @@ public interface CategoryService{
 
 	List<Category> findAll();
 
-
+	long count();
 }
