@@ -1,0 +1,54 @@
+.nn-lang{
+	position: absolute;
+	top: 0px;
+	right:0px;
+}
+
+.nn-search{
+	position: absolute;
+	bottom: 5px;
+	right:5px;
+}
+
+
+.nn-header{
+	position: relative;
+}
+
+.nn-item{
+	height:150px;
+	 max-height:98%;
+}
+
+.nn-text{
+	height:35px;
+	 max-height:98%;
+}
+
+.nn-detail ul li{
+	line-height:30px;
+	border-bottom:dotted;
+}
+
+.nn-thumb img{
+	width: 60px;
+	height: 60px;
+	margin: 5px;
+	padding:5px;
+	border-radius: 5px;
+	box-shadow: 0 0 5px gray;
+}
+
+.nn-thumb a{
+	text-decoration: none;
+}
+
+.nn-detail img{
+	height: 400px;
+	max-width: 100%;
+	
+}
+
+.nn-thumb img:hover{
+	box-shadow: 0 0 5px red;
+}

@@ -1,0 +1,18 @@
+<nav xmlns:th="http://www.thymeleaf.org">
+<div class="card">
+  <div class="card-header">Danh mục hàng hóa</div>
+		  <div class="list-group list-group-flush">
+		  <th:block th:each="c : ${categories}">
+		  		 <a th:href="@{|/product/category/${c.id}|}" class="list-group-item list-group-item-action" >
+		  		 	<span th:text="${c.nameVn}"></span>
+		  		 	<span class="badge bg-primary float-end">
+		  		 		<b th:text="${c.products.size()}"></b>
+		  		 	</span>
+		  		 	
+		  		 </a>
+		  </th:block>
+		</div>
+
+</div>
+
+</nav>
