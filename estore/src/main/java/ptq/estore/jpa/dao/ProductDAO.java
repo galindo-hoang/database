@@ -1,13 +1,17 @@
 package ptq.estore.jpa.dao;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import org.springframework.transaction.annotation.Transactional;
 import ptq.estore.jpa.entity.Product;
 
 
@@ -30,6 +34,7 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 			+ "GROUP BY d.product.id "
 			+ "ORDER BY sum(d.unitPrice * d.quantity*(1-d.discount))")
 	List<Integer> findByBestIds(Pageable pageable);
+
 	
 	
 	@Query("SELECT p FROM Product p WHERE p.id IN ?1")
@@ -41,6 +46,26 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 	@Query("SELECT p FROM Product p  ORDER BY p.createDate DESC")
 	Page<Product> findByLatest(Pageable pageable);
 
-	
-	
+
+
+
+	@Query("select count (p) from Product p where p.category.id = ?1")
+	Integer findByCategoryId(Integer id);
+
+	@Query("select p.name from Product p where p.id = ?1")
+	String findNameById(Integer id);
+
+	@Modifying
+	@Transactional
+	@Query("update Product p set p.name = ?2 where p.id = ?1")
+	void updateNameById(Integer id, String name);
+
+	@Modifying
+	@Transactional
+	@Query("delete from Product p where p.id = ?1")
+	void delete(Integer id);
+
+
+	@Query("select p.id from Product p where p.id = ?1")
+	Integer findIdById(Integer id);
 }
