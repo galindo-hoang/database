@@ -3,13 +3,16 @@ package estore;
 import org.dbunit.DBTestCase;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 import ptq.estore.EstoreApplication;
+import ptq.estore.exception.InvalidQuantityException;
 import ptq.estore.jpa.dao.ProductDAO;
 import ptq.estore.jpa.entity.Product;
 
@@ -54,6 +57,17 @@ class EstoreApplicationTests extends DBTestCase {
 		Assertions.assertEquals(79, dao.count());
 	}
 
+	@Test
+	@Transactional(rollbackFor = InvalidQuantityException.class)
+	public void testByInvalidQuantity(){
+		try{
+			dao.save(new Product(19127059,-1));
+		}catch (InvalidQuantityException e){
+			e.printStackTrace();
+		}
+		Product product = dao.findById(19127059).orElse(null);
+		Assert.assertNull(product);
+	}
 
 
 	@Override
