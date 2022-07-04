@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ptq.estore.exception.InvalidQuantityException;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -52,4 +53,11 @@ public class Product {
 	@JsonIgnore
 	@OneToMany(mappedBy = "product")
 	List<OrderDetail> orderDetails;
+	public Product(Integer id,Integer quantityItems) throws InvalidQuantityException {
+		if (quantityItems<0) throw new InvalidQuantityException("Quantity must be greater than 0");
+		else {
+			this.quantity = quantityItems;
+			this.id=id;
+		}
+	}
 }

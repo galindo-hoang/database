@@ -1,13 +1,17 @@
 package ptq.estore.jpa.dao;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import org.springframework.transaction.annotation.Transactional;
 import ptq.estore.jpa.entity.Product;
 
 
@@ -30,6 +34,7 @@ public interface ProductDAO extends JpaRepository<Product, Integer>{
 			+ "GROUP BY d.product.id "
 			+ "ORDER BY sum(d.unitPrice * d.quantity*(1-d.discount))")
 	List<Integer> findByBestIds(Pageable pageable);
+
 	
 	
 	@Query("SELECT p FROM Product p WHERE p.id IN ?1")
