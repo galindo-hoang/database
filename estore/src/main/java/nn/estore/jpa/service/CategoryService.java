@@ -10,9 +10,10 @@ public interface CategoryService{
 
 	Category findById(Integer id);
 
-	void create(Category entity);
+	Category create(Category entity);
 
 	void update(Category entity);
-
+	List<Category> findByName(String entity);
 	void deleteById(Integer id);
+
 }

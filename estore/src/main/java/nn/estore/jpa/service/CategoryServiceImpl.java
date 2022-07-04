@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import nn.estore.jpa.dao.CategoryDAO;
 import nn.estore.jpa.entity.Category;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class CategoryServiceImpl implements CategoryService{
 	@Autowired
 	CategoryDAO dao;
@@ -24,8 +26,8 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
-	public void create(Category entity) {
-		dao.save(entity);
+	public Category create(Category entity) {
+		return dao.save(entity);
 	}
 
 	@Override
@@ -34,7 +36,13 @@ public class CategoryServiceImpl implements CategoryService{
 	}
 
 	@Override
+	public List<Category> findByName(String entity) {
+		return dao.findByName(entity);
+	}
+
+	@Override
 	public void deleteById(Integer id) {
 		dao.deleteById(id);
 	}
+
 }

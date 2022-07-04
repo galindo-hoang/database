@@ -12,22 +12,29 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
+@EqualsAndHashCode(of = "id")
 @Entity
 @Table(name = "Categories")
 public class Category {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
-	String name;
-	@Column(name = "namevn")
-	String nameVn;
-	
-	@OneToMany(mappedBy = "category")
-	List<Product> products;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    String name;
+    @Column(name = "namevn")
+    String nameVn;
+
+    @OneToMany(mappedBy = "category")
+    List<Product> products;
+
+    public Category(  String name, String nameVn) {
+        this.name = name;
+        this.nameVn = nameVn;
+
+    }
 }
