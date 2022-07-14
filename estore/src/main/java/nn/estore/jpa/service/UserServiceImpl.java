@@ -2,6 +2,7 @@ package nn.estore.jpa.service;
 
 import java.util.List;
 
+import org.aspectj.weaver.IClassFileProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +17,7 @@ import nn.estore.jpa.entity.User;
 import nn.estore.jpa.entity.UserRole;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
 	@Autowired
 	UserDAO dao;

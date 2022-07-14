@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import nn.estore.jpa.dao.ProductDAO;
 import nn.estore.jpa.entity.Product;
 import nn.estore.jpa.entity.User;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ProductServiceImpl implements ProductService{
 	@Autowired
 	ProductDAO dao;

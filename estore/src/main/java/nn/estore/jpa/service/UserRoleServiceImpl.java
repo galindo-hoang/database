@@ -9,8 +9,10 @@ import nn.estore.jpa.dao.UserRoleDAO;
 import nn.estore.jpa.entity.Role;
 import nn.estore.jpa.entity.User;
 import nn.estore.jpa.entity.UserRole;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserRoleServiceImpl implements UserRoleService{
 	@Autowired
 	UserRoleDAO dao;

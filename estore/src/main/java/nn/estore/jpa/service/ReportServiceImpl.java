@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import nn.estore.jpa.dao.OrderDetailDAO;
 import nn.estore.jpa.dao.ProductDAO;
 import nn.estore.jpa.entity.ReportItem;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ReportServiceImpl implements ReportService{
 	@Autowired
 	ProductDAO pdao;

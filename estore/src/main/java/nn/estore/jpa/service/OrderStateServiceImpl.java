@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import nn.estore.jpa.dao.OrderStateDAO;
 import nn.estore.jpa.entity.OrderState;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class OrderStateServiceImpl implements OrderStateService{
 	@Autowired
 	OrderStateDAO dao;
-
 	@Override
 	public OrderState findById(int id) {
 		return dao.getById(id);
