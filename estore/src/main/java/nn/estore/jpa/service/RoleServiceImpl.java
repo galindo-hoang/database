@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import nn.estore.jpa.dao.RoleDAO;
 import nn.estore.jpa.entity.Role;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService{
 	@Autowired
 	RoleDAO dao;

@@ -17,6 +17,7 @@ import nn.estore.jpa.entity.User;
 import nn.estore.service.ShoppingCartService.CartItem;
 
 @Service
+@Transactional
 public class OrderServiceImpl implements OrderService{
 	@Autowired
 	OrderDAO dao;
