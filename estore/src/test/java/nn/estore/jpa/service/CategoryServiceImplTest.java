@@ -20,18 +20,19 @@ class CategoryServiceImplTest {
 
     @Test
     void findAll() {
+        List<Category> list = categoryService.findAll();
+        assertThat(list, is(notNullValue()));
     }
 
     @Test
     void findById() {
+        Category category = categoryService.findById(1079);
+        assertThat(category,is(notNullValue(Category.class)));
+        assertThat(category.getId(),is(1079));
     }
 
     @Test
     void create() {
-    }
-
-    @Test
-    void update() {
         Category category = categoryService.create(new Category("test", "test"));
         List<Category> list = categoryService.findByName("test");
         assertThat(0, is(not(list.size())));
@@ -39,6 +40,20 @@ class CategoryServiceImplTest {
     }
 
     @Test
+    void update() {
+        Category category = categoryService.findById(1080);
+        category.setName("hello world");
+        categoryService.update(category);
+        Category update = categoryService.findById(1080);
+        assertThat(update.getName(),is("hello world"));
+    }
+
+    @Test
     void deleteById() {
+        Category category = categoryService.findById(1081);
+        assertThat(category,is(notNullValue(Category.class)));
+        categoryService.deleteById(1081);
+        Category afterUpdate = categoryService.findById(1081);
+        assertThat(afterUpdate, is(nullValue()));
     }
 }
