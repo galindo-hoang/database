@@ -1,45 +1,40 @@
 package nn.estore.jpa.service;
 
-import nn.estore.jpa.entity.Product;
+import nn.estore.jpa.entity.Role;
+import nn.estore.jpa.entity.UserRole;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.hamcrest.CoreMatchers.*;
 
 /**
  * nn.estore.jpa.service
  * Created by Admin
- * Date 7/4/2022 - 11:12 PM
+ * Date 7/16/2022 - 3:41 PM
  * Description: ...
  */
-
 @SpringBootTest
 @Transactional
-class ProductServiceImplTest {
+class RoleServiceImplTest {
     @Autowired
-    ProductService productService;
+    RoleService roleService;
 
     @Test
-    void findByCategory() {
-
-    }
-
-    @Test
-    void findByName() {
-    }
-
-    @Test
-    void findByDiscount() {
+    void findAll() {
+        List<Role> list = roleService.findAll();
+        assertThat(list.isEmpty(), is(false));
     }
 
     @Test
     void findById() {
-        Product product =productService.findById(10001);
-        assertThat(product, is(notNullValue()));
+        String id="ADMIN";
+        Role role=roleService.findById(id);
+        assertThat(role.getId(), is(id));
     }
 }
