@@ -39,6 +39,7 @@ public class AuthorizeAController {
 		User user = userService.findByUsername(pairs[0]);
 		Role role = roleService.findById(pairs[1]);
 		try {
+
 			UserRole userRole = userRoleService.findByUserAndRole(user, role);
 			// Xóa
 			userRoleService.delete(userRole);

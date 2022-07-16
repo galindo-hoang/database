@@ -30,6 +30,12 @@ public class UserRole {
 	@JoinColumn(name = "Username")
 	User user;
 
+
+	public UserRole(Role role, User user) {
+		this.role = role;
+		this.user = user;
+	}
+
 /*	UserRole(Integer id){
 		this.id=id;
 		role=null;

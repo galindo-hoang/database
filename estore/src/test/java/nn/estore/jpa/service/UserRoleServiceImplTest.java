@@ -4,14 +4,18 @@ import nn.estore.jpa.entity.Role;
 import nn.estore.jpa.entity.User;
 import nn.estore.jpa.entity.UserRole;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.NotNull;
+import org.mockito.internal.matchers.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.support.NullValue;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,23 +45,38 @@ class UserRoleServiceImplTest {
 
     @Test
     void findByUserAndRole() {
-        /*String userName="user1";
-        User user=userService.findByUsername(userName);
-        System.out.println("user222"+user);*/
+        userService.create(new User("testFind", "2"));
+        User user=userService.findByUsername("testFind");
+        Role newRole=roleService.findAll().get(0);
+        userRoleService.create(new UserRole(newRole,user));
+        UserRole userRole= userRoleService.findByUserAndRole(user,newRole);
+        userRoleService.delete(userRole);
+        UserRole findUser= userRoleService.findByUserAndRole(user,newRole);
+        assertThat(findUser, is(nullValue()));
     }
+
 
     @Test
     void delete() {
-        /*Role role=roleService.findById("SUPER");
-        User user=userService.findByUsername("user1");
-        userRoleService.delete(new UserRole(role,user));*/
+        userService.create(new User("testFind", "2"));
+        User user=userService.findByUsername("testFind");
+        Role newRole=roleService.findAll().get(0);
+        userRoleService.create(new UserRole(newRole,user));
+        UserRole userRole= userRoleService.findByUserAndRole(user,newRole);
+        userRoleService.delete(userRole);
+        UserRole findUser= userRoleService.findByUserAndRole(user,newRole);
+        assertThat(findUser, is(nullValue()));
     }
 
     @Test
     void create() {
-       /* Role role=roleService.findById("SUPER");
-        User user=userService.findByUsername("user3");
-        UserRole userRole=new UserRole(role,user);
-        userRoleService.create(userRole);*/
+        userService.create(new User("testFind", "2"));
+        User user=userService.findByUsername("testFind");
+        Role newRole=roleService.findAll().get(0);
+        userRoleService.create(new UserRole(newRole,user));
+        UserRole userRole= userRoleService.findByUserAndRole(user,newRole);
+        userRoleService.delete(userRole);
+        UserRole findUser= userRoleService.findByUserAndRole(user,newRole);
+        assertThat(findUser, is(nullValue()));
     }
 }
