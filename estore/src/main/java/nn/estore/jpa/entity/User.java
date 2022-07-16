@@ -35,4 +35,16 @@ public class User {
 	
 	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
 	List<UserRole> userRoles;
+
+	public User(String username,String password){
+		this.username=username;
+		this.password=password;
+		this.fullname="Test2022";
+		this.photo="new.png";
+		this.email="Test2022@gmail.com";
+		this.enabled=true;
+		this.customerOrders=null;
+		this.masterOrders=null;
+		this.userRoles=null;
+	}
 }
