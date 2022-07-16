@@ -1,0 +1,160 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > UserRoleServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">nn.estore.jpa.service</a>
+</div>
+
+<h1>Coverage Summary for Class: UserRoleServiceImpl (nn.estore.jpa.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">UserRoleServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">UserRoleServiceImpl$$EnhancerBySpringCGLIB$$a83b9ca2</td>
+  </tr>
+  <tr>
+    <td class="name">UserRoleServiceImpl$$EnhancerBySpringCGLIB$$a83b9ca2$$FastClassBySpringCGLIB$$b210fd36</td>
+  </tr>
+  <tr>
+    <td class="name">UserRoleServiceImpl$$FastClassBySpringCGLIB$$69606a04</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package nn.estore.jpa.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.util.List;
+<i class="no-highlight">4</i>&nbsp;
+<i class="no-highlight">5</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;import nn.estore.jpa.dao.UserRoleDAO;
+<i class="no-highlight">9</i>&nbsp;import nn.estore.jpa.entity.Role;
+<i class="no-highlight">10</i>&nbsp;import nn.estore.jpa.entity.User;
+<i class="no-highlight">11</i>&nbsp;import nn.estore.jpa.entity.UserRole;
+<i class="no-highlight">12</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;@Service
+<i class="no-highlight">15</i>&nbsp;@Transactional
+<b class="fc"><i class="no-highlight">16</i>&nbsp;public class UserRoleServiceImpl implements UserRoleService{</b>
+<i class="no-highlight">17</i>&nbsp;	@Autowired
+<i class="no-highlight">18</i>&nbsp;	UserRoleDAO dao;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;	@Override
+<i class="no-highlight">21</i>&nbsp;	public List&lt;UserRole&gt; findAll() {
+<b class="fc"><i class="no-highlight">22</i>&nbsp;		return dao.findAll();</b>
+<i class="no-highlight">23</i>&nbsp;	}
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;	@Override
+<i class="no-highlight">26</i>&nbsp;	public UserRole findByUserAndRole(User user, Role role) {
+<b class="fc"><i class="no-highlight">27</i>&nbsp;		return dao.findByUserAndRole(user, role);</b>
+<i class="no-highlight">28</i>&nbsp;	}
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;	@Override
+<i class="no-highlight">31</i>&nbsp;	public void delete(UserRole userRole) {
+<b class="fc"><i class="no-highlight">32</i>&nbsp;		dao.delete(userRole);</b>
+<i class="no-highlight">33</i>&nbsp;	}
+<i class="no-highlight">34</i>&nbsp;
+<i class="no-highlight">35</i>&nbsp;	@Override
+<i class="no-highlight">36</i>&nbsp;	public void create(UserRole userRole) {
+<b class="fc"><i class="no-highlight">37</i>&nbsp;		dao.save(userRole);</b>
+<i class="no-highlight">38</i>&nbsp;	}
+<i class="no-highlight">39</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-07-17 01:13</div>
+</div>
+</body>
+</html>
