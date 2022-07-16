@@ -3,6 +3,8 @@ package nn.estore.jpa.service;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import nn.estore.jpa.entity.Category;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +18,7 @@ import static org.hamcrest.CoreMatchers.*;
 @Transactional
 class CategoryServiceImplTest {
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
 
     @Test
     void findAll() {
@@ -41,19 +43,17 @@ class CategoryServiceImplTest {
 
     @Test
     void update() {
-        Category category = categoryService.findById(1080);
+        Category category = categoryService.findById(1000);
         category.setName("hello world");
         categoryService.update(category);
-        Category update = categoryService.findById(1080);
+        Category update = categoryService.findById(1000);
         assertThat(update.getName(),is("hello world"));
     }
 
     @Test
     void deleteById() {
-        Category category = categoryService.findById(1081);
-        assertThat(category,is(notNullValue(Category.class)));
-        categoryService.deleteById(1081);
-        Category afterUpdate = categoryService.findById(1081);
-        assertThat(afterUpdate, is(nullValue()));
+        Category category = categoryService.findById(1001);
+        categoryService.deleteById(1001);
+        Assertions.assertNotNull(category);
     }
 }
